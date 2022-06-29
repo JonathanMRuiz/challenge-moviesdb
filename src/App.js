@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import notfound from "./img/notfound.png";
-import Movies from "./components/Movies";
+import Movie from "./components/Movie";
 import Search from "./components/Search";
 import Modal from "./components/Modal";
-import Rating from "./components/Rating";
 
 const API_URL =
   "https://api.themoviedb.org/3/movie/popular?api_key=7ee5b6aa823d69ca4af4d1322cbd63ed";
@@ -20,19 +19,6 @@ const App = () => {
       });
   }, []);
 
-  const sortMovies = movies.reduce((acc, movie) => {
-    
-    const sort = movie.sort()
-
-    acc.push({
-      vote: movie.vote_average,
-    });
-
-    return acc;
-  }, []);
-
-  console.log(sortMovies);
-
   return (
     <div className='bg-blue-900'>
       <div className='flex justify-between align-center p-5'>
@@ -45,8 +31,7 @@ const App = () => {
             <div className='grid grid-cols-4'>
               {movies.map((movie) => (
                 <div>
-                  <Movies key={movie.id} {...movie} />
-                  <Modal {...movie} />
+                  <Movie key={movie.id} {...movie} />
                 </div>
               ))}
             </div>
