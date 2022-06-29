@@ -20,12 +20,24 @@ const App = () => {
       });
   }, []);
 
+  const sortMovies = movies.reduce((acc, movie) => {
+    
+    const sort = movie.sort()
+
+    acc.push({
+      vote: movie.vote_average,
+    });
+
+    return acc;
+  }, []);
+
+  console.log(sortMovies);
+
   return (
-    <div className='bg-orange-300'>
+    <div className='bg-blue-900'>
       <div className='flex justify-between align-center p-5'>
-        <h1>Jota Movies</h1>
+        <a href='#'>Jota Movies</a>
         <Search setMovies={setMovies} />
-        <Rating />
       </div>
       <div>
         {movies.length > 0 ? (
@@ -34,13 +46,14 @@ const App = () => {
               {movies.map((movie) => (
                 <div>
                   <Movies key={movie.id} {...movie} />
+                  <Modal {...movie} />
                 </div>
               ))}
             </div>
           </div>
         ) : (
           <div className='w-full flex-col flex justify-center align-center'>
-            <img src={notfound} alt='' />
+            <img src={notfound} alt='' className='h-[90vh]' />
           </div>
         )}
       </div>

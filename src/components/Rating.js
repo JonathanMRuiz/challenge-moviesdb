@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Rating = () => {
   const [rating, setRating] = useState(null);
+
   return (
     <div class='flex items-center'>
       <svg

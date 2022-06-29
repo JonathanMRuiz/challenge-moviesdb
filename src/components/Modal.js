@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import ReactModal from "react-modal";
+const IMG_API = "https://image.tmdb.org/t/p/w500/";
 const Modal = ({
   title,
   poster_path,
@@ -8,16 +9,25 @@ const Modal = ({
   overview,
 }) => {
   const [showModal, setShowModal] = useState(false);
+
+  function openModal() {
+    setShowModal(true);
+  }
+
+  function closeModal() {
+    setShowModal(false);
+  }
   return (
     <>
-      <button
-        className='bg-blue-200 text-black active:bg-blue-500 
-      font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1'
-        type='button'
-        onClick={() => setShowModal(true)}>
-        Fill Details
-      </button>
-      {showModal ? <></> : null}
+      <button onClick={openModal}>Open Modal</button>
+      <ReactModal isOpen={showModal}>
+        <img src={IMG_API + poster_path} alt={title} />
+        <h2 className='text-xl'>{title}</h2>
+        <p className='text-sm'>{overview}</p>
+        <span>Rating: {vote_average}</span>
+        <p>{release_date}</p>
+        <button onClick={closeModal}>Close Modal</button>
+      </ReactModal>
     </>
   );
 };
