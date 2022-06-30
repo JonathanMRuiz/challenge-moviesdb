@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 const Search = ({ setMovies }) => {
-  const [query, setQuery] = useState("");
+  const [searchMovie, setSearchMovie] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const SEARCH_API = ` https://api.themoviedb.org/3/search/movie?api_key=7ee5b6aa823d69ca4af4d1322cbd63ed&query=${query}`;
+      const SEARCH_API = ` https://api.themoviedb.org/3/search/movie?api_key=7ee5b6aa823d69ca4af4d1322cbd63ed&query=${searchMovie}`;
       const res = await fetch(SEARCH_API);
       const data = await res.json();
 
@@ -18,7 +18,7 @@ const Search = ({ setMovies }) => {
   };
 
   const changeHandler = (e) => {
-    setQuery(e.target.value);
+    setSearchMovie(e.target.value);
   };
 
   return (
@@ -40,7 +40,7 @@ const Search = ({ setMovies }) => {
         <input
           type='text'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          value={query}
+          value={searchMovie}
           name='query'
           onChange={changeHandler}
           placeholder='Search...'
