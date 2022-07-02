@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Search = ({ setMovies }) => {
   const [searchMovie, setSearchMovie] = useState("");
 
+  useEffect(() => {
+    axios
+      .get(
+        ` ${process.env.REACT_APP_API_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchMovie}`
+      )
+      .then(({ data }) => setMovies(data.results))
+      .catch((err) => console.log(err));
+  }, [searchMovie, setMovies]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const SEARCH_API = ` https://api.themoviedb.org/3/search/movie?api_key=7ee5b6aa823d69ca4af4d1322cbd63ed&query=${searchMovie}`;
-      const res = await fetch(SEARCH_API);
-      const data = await res.json();
-
-      console.log(data);
-      setMovies(data.results);
-    } catch (e) {
-      console.log(e);
-    }
   };
 
   const changeHandler = (e) => {
