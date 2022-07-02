@@ -1,6 +1,4 @@
-explicar
-1-tecnologias que utilize (react,tailwind, etc...)
-2-que necesito para levantar configurar env con estas claves, npm install , npm start.
+
 
 1- Al archivo .env.example quitarle el .example para poder utilizar las claves.
 
