@@ -5,7 +5,7 @@ import Rating from "./components/Rating";
 import useMovies from "./api/useMovieFetch";
 
 const App = () => {
-  const { movies, getMovies, searchMovies } = useMovies();
+  const { movies, getMovies, searchMovies, isLoading } = useMovies();
   const [ratingFilter, setRatingFilter] = useState(0);
 
   const handleSearch = (searchMovie) => {
@@ -26,12 +26,15 @@ const App = () => {
     <div className="flex flex-col">
       <div className="flex justify-between p-2">
         <Search onSearchChange={handleSearch} />
-        <Rating onStarChange={calculateRating} />
+        <Rating onStarChange={calculateRating} isLoading={isLoading} />
       </div>
+
       <div>
-        {movies.length > 0 ? (
+        {isLoading ? (
+          "Cargando"
+        ) : movies.length > 0 ? (
           <>
-            <div className="flex items-center justify-center flex-wrap">
+            <ul className="flex items-center justify-center flex-wrap">
               {movies
                 .filter((movie) => {
                   if (ratingFilter === 0) {
@@ -44,15 +47,15 @@ const App = () => {
                   );
                 })
                 .map((movie) => (
-                  <div key={movie.id} className="p-1">
+                  <li key={movie.id} className="p-1">
                     <Movie {...movie} />
-                  </div>
+                  </li>
                 ))}
-            </div>
+            </ul>
           </>
         ) : (
-          <div className="h-[100vh] flex justify-center align-center">
-            <h3 className="text-black text-xl">MOVIE NOT FOUND</h3>
+          <div className="h-[100vh] flex justify-center items-center">
+            <p className="text-black text-xl">Pelicula no encontrada</p>
           </div>
         )}
       </div>

@@ -45,5 +45,8 @@
     "msw": "^0.43.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.4"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
