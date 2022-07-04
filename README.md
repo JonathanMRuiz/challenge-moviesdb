@@ -21,5 +21,4 @@ Despues para iniciar la app `npm run start` o `npm start` en la misma terminal.
 -Libreria de axios para los request de la API.
 <br />
 -Tailwind para el diseño, ya que me parece practico al momento de hacer algo rapido y responsive.
-
-
+-Test con `npm test`(Se que no pedian test pero lo hice a modo de practica para mi)
