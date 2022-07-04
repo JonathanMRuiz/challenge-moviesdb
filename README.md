@@ -15,8 +15,8 @@ REACT_APP_API_IMG=https://image.tmdb.org/t/p/w500/
 Despues para iniciar la app `npm run start` o `npm start` en la misma terminal.
 
 
-<br />Tecnologia utilizada:
-<br />
+<br />Tecnologias utilizadas:
+---------------------------
 -Javascript para la parte logica.
 <br />
 -Libreria de axios para los request de la API.
