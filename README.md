@@ -1,5 +1,6 @@
 
- 
+Pasos necesarios para correr la App 
+--------------------------------------
 1=>Crear un archivo `.env` con las siguientes variables: 
 <br />
 REACT_APP_API_URL=https://api.themoviedb.org/3
